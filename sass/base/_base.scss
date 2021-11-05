@@ -1,0 +1,51 @@
+*,
+*::after,
+*::before {
+  /* every page has default margin and padding
+    settings that's why.  */
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; /* which is 10 px default is 16px. we used it to make easy calculations
+  for other selectors which have rem units belows
+  based on this value other rem values multiplied by 10px when being calculated below.
+  */
+
+  // *so important the order of  tab-port and tab-land codes. otherwise tab-land wont be implied
+  // since both are conflicted*
+
+  @include respond(tab-land) {
+    font-size: 56.25%; // 1rem 9px, 9/16 = 56.25%
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; // 1rem 8px, 8/16 = 50%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem 12px, 9/12 = 75%
+  }
+}
+
+body {
+  box-sizing: border-box;
+  /* borders and paddings are not added to total
+    width and height of box 
+    width + padding + border = actual width of an element
+    height + padding + border = actual height of an element
+    This means: When you set the width/height of an element,
+    the element often appears bigger than you have set*/
+  padding: 3rem; /* entire body, around all elements  */
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}

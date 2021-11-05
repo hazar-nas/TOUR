@@ -1,0 +1,83 @@
+.story {
+  width: 75%;
+  margin: 0 auto; // since it is block element inside block element(div inside div), we can center it with that
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  border-radius: 3px;
+  background-color: rgba($color-white, 0.6);
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: 1.6rem;
+  transform: skewX(-12deg);
+
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 8rem;
+  }
+
+  @include respond(phone) {
+    transform: skewX(0);
+  }
+
+  &_shape {
+    width: 15rem;
+    height: 15rem;
+    float: left; // it works if only dimensions are given (height-weight)
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    // where the content flows around the element
+    // first index for radius which 7.5 h and width other two for centering
+    border-radius: 50%;
+    overflow: hidden;
+    transform: translateX(-3rem) skewX(12.01deg);
+    // margin e bulasma floatın oldugu yerde translateX iyi
+    // skew degeri 12 olunca sagda solda lines oluyordu onları gizlemek icin
+    position: relative;
+
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0);
+    }
+  }
+
+  &_img {
+    transform: translateX(-4rem) scale(1.4);
+    // bunu fotografı icten sola kaydırmak icin yaptım direkt bir pozisyonla ilgli degil
+    height: 100%;
+    // since it is inside stor_shape class element it would take parent's value which is 15rem
+    // img always requires width or height value !!
+    transition: all 0.5s;
+    // backface-visibility: hidden;
+  }
+
+  &_text {
+    transform: skewX(12deg);
+    @include respond(phone) {
+      transform: skewX(0);
+    }
+  }
+
+  &_caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    font-size: 1.7rem;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 0.5s;
+    // backface-visibility: hidden;
+    opacity: 0;
+    // again you can use bg-face-vis:hidden if text shakes when moving
+  }
+
+  &:hover &_caption {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  &:hover &_img {
+    transform: translateX(-4rem) scale(1);
+    filter: blur(3px) brightness(80%);
+  }
+}

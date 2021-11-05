@@ -1,0 +1,68 @@
+.composition {
+  position: relative;
+
+  &__photo {
+    position: absolute;
+    width: 55%;
+    border-radius: 2px;
+    box-shadow: 0 1.5rem 4rem rgba(#000000, 0.4);
+    transition: all 0.2s;
+    outline-offset: 2rem; // border ile arasına mesafe koyuyor
+
+    // relative-absolute iliskisi oldugundan bu
+    // fotolar div ile aralarına asagidaki degerler
+    // kadar padding koyacak etc. top 2rem yukardan
+    // 2rem kadar uzakta yani arasına mesafe koyacak
+    @include respond(tab-port) {
+      position: relative;
+      // absolute olsa float is redundant bc absolute wins out
+      // position relative is used when you want to position another element
+      // absolutely inside that element.
+      float: left; // position element to left side and permit next element to position right side of this
+      width: 33.33333333%;
+    }
+
+    &--p1 {
+      left: 0;
+      top: -2rem;
+      @include respond(tab-port) {
+        top: 0;
+        transform: scale(1.1);
+      }
+    }
+
+    &--p2 {
+      right: 0;
+      top: 2rem;
+
+      @include respond(tab-port) {
+        top: -1rem;
+        transform: scale(1.3);
+        z-index: 100;
+      }
+    }
+
+    &--p3 {
+      top: 10rem;
+      left: 20%;
+      @include respond(tab-port) {
+        left: 0;
+        top: 1rem;
+        transform: scale(1.2);
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 2.5rem 4rem rgba(#000000, 0.4);
+      transform: translateY(-0.5rem);
+      z-index: 2;
+      transform: scale(1.1);
+      outline: 1.5rem solid $color-primary-dark;
+    }
+  }
+
+  &:hover &__photo:not(:hover) {
+    // degilinin degili
+    transform: scale(0.9);
+  }
+}

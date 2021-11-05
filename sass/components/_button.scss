@@ -1,0 +1,111 @@
+.btn {
+  &,
+  &:link,
+  &:visited {
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    /* inline-block padding ayarı yapınca diğer elementlere göre
+        değil de box mantığıyla kendi sınırlarına göre ayarlıyor
+        bir nevi box ile sınırlanmıs gibi. Default olarak inline elment */
+
+    border-radius: 10rem;
+    transition: all 0.2s;
+    /* this element initial state of animation
+        it starts the animation  */
+    position: relative;
+    font-size: 1.6rem;
+
+    // change for <button> element
+    border: none;
+    cursor: pointer;
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    /*  in css y axis moves from top to bottom that's why
+        I used - sign*/
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+
+  &--white {
+    color: $color-grey;
+    background-color: $color-white;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &--green {
+    color: $color-white;
+    background-color: $color-primary;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  /* ::after is used for producing the same element i used it
+      placing behind the button and animated it  */
+  &::after {
+    content: '';
+    /* content olmadan gelmez even if it is empty */
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    /* that means in the size of 100% of element will appear as a child element 
+        behind the main element due to z-index */
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* top and left 0 olmayınca sağına yapısık geliyor  */
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+    /* button will not appear since animation applied- 0 opacity in %0 - will be executed outside time   */
+  }
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: 1.6rem;
+    display: inline-block;
+    padding: 3px;
+    color: $color-primary-dark;
+    border-bottom: 1px solid $color-primary-dark;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    background-color: $color-primary-dark;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0.5rem 1rem rgba($color-black, 0.15);
+    transform: translateY(0);
+  }
+}

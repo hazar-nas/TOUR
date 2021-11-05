@@ -1,0 +1,91 @@
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: $color-grey;
+}
+
+.heading-primary {
+  text-transform: uppercase;
+  color: $color-white;
+  backface-visibility: hidden;
+  /* to prevent the texts from going up after animation ends */
+  margin-bottom: 6rem;
+
+  &--main {
+    /* block element occupies entire width and generate line breaks before and after */
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 2.8rem;
+
+    animation-name: moveInLeft;
+    animation-timing-function: ease-out;
+    animation-duration: 1.5s;
+
+    /* animation-delay: 1s; */
+
+    @include respond(phone) {
+      letter-spacing: 1rem;
+
+      font-size: 4rem;
+    }
+  }
+
+  &--sub {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1.3rem;
+    animation: moveInRight ease-out 1.5s;
+
+    @include respond(phone) {
+      letter-spacing: 0.5rem;
+    }
+  }
+}
+
+.heading-secondary {
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  // sadece block element yapınca box mantıgı yerine
+  // tum line ı kullanıyor so when hovering it, the element doesnt seem nice
+  font-size: 2.5rem;
+  background-image: linear-gradient(
+    to right,
+    $color-primary-light,
+    $color-primary-dark
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.2rem;
+  transition: 0.2 all;
+
+  @include respond(tab-port) {
+    font-size: 3rem;
+  }
+  @include respond(phone) {
+    font-size: 2rem;
+  }
+
+  &:hover {
+    transform: skewX(15deg) skewY(2deg) scale(1.1);
+    text-shadow: 0.6rem 1rem 1rem rgba($color-black, 0.2);
+  }
+}
+
+.heading-terniary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: 1.6rem;
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}

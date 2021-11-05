@@ -1,0 +1,20 @@
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.15;
+  //   overflow:hidden;
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    // fill the entire parent element it will maintain aspect ratio
+    // it works with html elements like video but not bg images
+    // object-fit:fill option does not maintain the aspect ratio
+    // halen parent elementi tasıyorsa video ya da content overflow:hidden kullan
+  }
+}
