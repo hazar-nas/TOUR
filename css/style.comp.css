@@ -258,6 +258,7 @@ body {
   position: relative; }
   .composition__photo {
     position: absolute;
+    height: 30rem;
     width: 55%;
     border-radius: 2px;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
@@ -267,7 +268,8 @@ body {
       .composition__photo {
         position: relative;
         float: left;
-        width: 33.33333333%; } }
+        width: 33.33333333%;
+        height: 15rem; } }
     .composition__photo--p1 {
       left: 0;
       top: -2rem; }

@@ -3,6 +3,7 @@
 
   &__photo {
     position: absolute;
+    height: 30rem;
     width: 55%;
     border-radius: 2px;
     box-shadow: 0 1.5rem 4rem rgba(#000000, 0.4);
@@ -20,6 +21,7 @@
       // absolutely inside that element.
       float: left; // position element to left side and permit next element to position right side of this
       width: 33.33333333%;
+      height: 15rem;
     }
 
     &--p1 {
